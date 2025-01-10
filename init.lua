@@ -32,6 +32,7 @@ require("lazy").setup({
 	require("plugins.scroll"),
 	require("plugins.vim-fugitive"),
 	require("plugins.nvim-ufo"),
+	require("plugins.nvim-scrollbar"),
 })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
