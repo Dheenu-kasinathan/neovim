@@ -155,10 +155,17 @@ return {
     local servers = {
       -- clangd = {},
       clangd = {
-        cmd = { 'clangd' },
+        cmd = {
+          'clangd',
+          '--background-index', -- Enables background indexing
+          '--compile-commands-dir=.', -- Use the compile_commands.json from the root
+          '--header-insertion=never', -- Prevents automatic header includes
+          '--query-driver=/usr/bin/clang++,/opt/ros/noetic/**', -- Ensures ROS headers are queried
+        },
         filetypes = { 'c', 'cpp', 'objc', 'objcpp' },
-        root_dir = lspconfig.util.root_pattern('.clangd', '.clang-format', '.git'),
+        root_dir = lspconfig.util.root_pattern('compile_commands.json', '.clangd', '.clang-format', '.git'),
         single_file_support = true,
+        capabilities = capabilities,
       },
       -- gopls = {},
       -- pyright = {},
