@@ -18,9 +18,10 @@ return {
         vim.cmd 'colorscheme rose-pine' -- reapply colorscheme to reflect changes
       end
 
-      vim.keymap.set('n', '<leader>bg', toggle_transparency, { noremap = true, silent = true })
+      vim.keymap.set('n', '<leader>bg', toggle_transparency, { noremap = true, silent = true, desc = 'Toogle background transparency' })
     end,
   },
+
   {
     'shaunsingh/nord.nvim',
     -- lazy = false,
