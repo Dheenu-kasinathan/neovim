@@ -34,6 +34,7 @@ require('lazy').setup {
   require 'plugins.nvim-ufo',
   require 'plugins.nvim-hlslens',
   require 'plugins.nvim-scrollbar',
+  require 'plugins.multiline-edit',
 }
 
 -- The line beneath this is called `modeline`. See `:help modeline`

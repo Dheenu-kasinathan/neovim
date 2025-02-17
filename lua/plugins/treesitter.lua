@@ -5,6 +5,12 @@ return { -- Highlight, edit, and navigate code
   -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
   opts = {
     ensure_installed = {
+      'c',
+      'cpp',
+      'cuda',
+      'desktop',
+      'devicetree',
+      'xml',
       'lua',
       'python',
       'vimdoc',

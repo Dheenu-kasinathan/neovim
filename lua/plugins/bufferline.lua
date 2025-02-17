@@ -13,12 +13,12 @@ return {
         close_command = 'Bdelete! %d', -- can be a string | function, see "Mouse actions"
         buffer_close_icon = '✗',
         close_icon = '✗',
-        path_components = 1, -- Show only the file name without the directory
+        -- path_components = 1, -- Show only the file name without the directory
         modified_icon = '●',
         left_trunc_marker = '',
         right_trunc_marker = '',
-        max_name_length = 30,
-        max_prefix_length = 30, -- prefix used when a buffer is de-duplicated
+        -- max_name_length = 30,
+        -- max_prefix_length = 30, -- prefix used when a buffer is de-duplicated
         tab_size = 21,
         diagnostics = false,
         diagnostics_update_in_insert = false,
@@ -28,7 +28,7 @@ return {
         show_close_icon = true,
         persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
         separator_style = { '│', '│' }, -- | "thick" | "thin" | { 'any', 'any' },
-        enforce_regular_tabs = true,
+        -- enforce_regular_tabs = true,
         always_show_bufferline = true,
         show_tab_indicators = false,
         indicator = {
@@ -40,6 +40,13 @@ return {
         maximum_padding = 5,
         maximum_length = 15,
         sort_by = 'insert_at_end',
+        -- Disable truncation of all buffer names
+        truncate_names = false,
+
+        -- Remove paths, showing only the filename
+        name_formatter = function(buf)
+          return vim.fn.fnamemodify(buf.name, ':t')
+        end,
       },
       highlights = {
         separator = {
@@ -47,7 +54,8 @@ return {
         },
         buffer_selected = {
           bold = true,
-          italic = false,
+          italic = true,
+          fg = '#e6b567',
         },
         -- separator_selected = {},
         -- tab_selected = {},
