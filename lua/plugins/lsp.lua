@@ -12,6 +12,7 @@ return {
             local ret = {
                 -- options for vim.diagnostic.config()
                 ---@type vim.diagnostic.Opts
+
                 diagnostics = {
                     underline = true,
                     update_in_insert = false,
@@ -67,7 +68,17 @@ return {
                 servers = {
                     -- Add clangd for C/C++ (and related languages) if you wish to use its LSP formatting:
                     clangd = {
-                        cmd = { 'clangd', '--background-index' },
+                        cmd = {
+                            'clangd',
+                            '--background-index',
+                            '--compile-commands-dir=.', -- Use the compile_commands.json from the root
+                            '--header-insertion=never', -- Prevents automatic header includes
+                            '--query-driver=/usr/bin/clang++,/opt/ros/noetic/**', -- Ensures ROS headers are queried},
+                            '--fallback-style=none',
+                            '--log=verbose',
+                            '--enable-config',
+                        },
+
                         filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda' },
                         root_dir = require('lspconfig.util').root_pattern('compile_commands.json', 'compile_flags.txt', '.git', '.clangd', '.clang-format'),
                         -- Additional clangd-specific settings can be added here.
